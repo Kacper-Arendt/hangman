@@ -5,3 +5,4 @@ export * from "coreUI/items/Logo";
 
 // ELEMENTS
 export * from "coreUI/elements/Form";
+export * from "coreUI/elements/Wrapper";

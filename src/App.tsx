@@ -1,8 +1,9 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 
 // COMPONENTS
 import { Login, Register } from "components/auth";
+import { Game } from "components/game";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -11,12 +12,15 @@ const Wrapper = styled.div`
 function App() {
   return (
     <Wrapper>
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/">
+            <Route index element={<Game />} />
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+          </Route>
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </Wrapper>
   );
 }

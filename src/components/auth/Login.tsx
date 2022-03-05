@@ -5,7 +5,7 @@ export const Login = () => (
     email
     buttonValue="Login"
     onSubmit={() => {}}
-    linkPath="/"
+    linkPath="/register"
     linkValue="Register"
     linkText="Need an account?"
   />
