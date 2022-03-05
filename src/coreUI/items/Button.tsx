@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import React from "react";
 
 export interface ButtonProps {
-  variant: "white" | "grey" | "black";
+  variant: "white" | "grey" | "black" | "green";
   value: string;
   width?: string;
   type?: "button" | "submit" | "reset";
@@ -13,13 +13,17 @@ const StyledButton = styled.button<ButtonProps>`
   font-size: 1rem;
   cursor: pointer;
   font-weight: ${({ theme }) => theme.fontWeight.regular};
-  border-radius: ${({ theme }) => theme.radius[2]};
+  border-radius: ${({ theme }) => theme.radius[1]};
   width: ${({ width }) => width || "auto"};
-  padding: 0.75rem 1rem;
+  padding: 1rem;
   border: 0;
 
   :disabled {
     cursor: unset;
+  }
+
+  :hover {
+    transform: scale(1.01);
   }
 
   ${({ variant }) => {
@@ -27,6 +31,12 @@ const StyledButton = styled.button<ButtonProps>`
       case "white":
         return css`
           background-color: ${({ theme }) => theme.white};
+          ${({ theme }) => theme.shadow({ color: theme.black })};
+        `;
+      case "green":
+        return css`
+          background-color: ${({ theme }) =>
+            theme.transparentize({ amount: 0.15, color: theme.success })};
           border: 1px solid ${({ theme }) => theme.white};
           ${({ theme }) => theme.shadow({ color: theme.black })};
         `;
@@ -48,6 +58,10 @@ const StyledButton = styled.button<ButtonProps>`
         return null;
     }
   }};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 15rem;
+  }
 `;
 
 export const Button = ({
