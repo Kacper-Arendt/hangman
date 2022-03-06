@@ -1,7 +1,9 @@
 // ITEMS
-export * from "coreUI/items/Button";
-export * from "coreUI/items/Input";
-export * from "coreUI/items/Logo";
+export * from './items/Button';
+export * from './items/Input';
+export * from './items/Logo';
 
 // ELEMENTS
-export * from "coreUI/elements/Form";
+export * from './elements/Form';
+export * from './elements/Wrapper';
+export * from './elements/Hangman';
