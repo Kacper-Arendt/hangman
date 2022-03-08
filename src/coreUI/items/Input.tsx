@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
+import { ColorTye } from '../../utilis/theme/themeDefault';
 
 interface Props {
 	title: string;
-	bgColor: string;
+	bgColor: ColorTye;
 	btnType?: 'button' | 'reset' | 'submit';
 	type?: string;
 	error?: string;
@@ -50,11 +51,11 @@ const StyledButton = styled.button<{ type: string }>`
 	cursor: pointer;
 `;
 
-export const Input = ({ title, type, bgColor, error, btnType }: Props) => (
+export const Input = ({ title, type = 'text', bgColor = 'transparent', error, btnType }: Props) => (
 	<Label>
 		{title}
 		{btnType && <StyledButton type={btnType}>Zmień</StyledButton>}
-		<StyledInput type={type ?? 'text'} bgColor={bgColor} />
+		<StyledInput type={type} bgColor={bgColor} />
 		{error && <p>{error}</p>}
 	</Label>
 );

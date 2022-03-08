@@ -15,6 +15,7 @@ export const singleGame = createSlice({
 	initialState,
 	reducers: {
 		startGame: (state, action: PayloadAction<string>) => {
+			state = initialState;
 			return {
 				...state,
 				hiddenWord: Array.from(action.payload.toUpperCase()),

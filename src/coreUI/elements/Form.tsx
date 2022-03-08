@@ -35,7 +35,7 @@ export const Form = ({ email, name, linkPath, linkValue, buttonValue, onSubmit, 
 	<Wrapper>
 		<StyledForm onSubmit={onSubmit}>
 			<Logo />
-			{email && <Input bgColor="white" title="Email" type="email" />}
+			{email && <Input bgColor="transparent" title="Email" type="email" />}
 			{name && <Input bgColor="white" title="Name" type="text" />}
 			<Input bgColor="white" title="Password" type="password" />
 			<Button value={buttonValue} type="submit" variant="black" width="100%" />

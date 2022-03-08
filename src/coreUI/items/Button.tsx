@@ -19,7 +19,7 @@ const StyledButton = styled.button<ButtonProps>`
 	border: 0;
 
 	:disabled {
-		cursor: unset;
+		cursor: not-allowed;
 	}
 
 	:hover {
@@ -62,7 +62,7 @@ const StyledButton = styled.button<ButtonProps>`
 	}
 `;
 
-export const Button = ({ variant, width, type, onClick, value }: ButtonProps) => (
+export const Button = ({ variant, width, type = 'button', onClick, value }: ButtonProps) => (
 	<StyledButton variant={variant} value={value} type={type} width={width} onClick={onClick}>
 		{value}
 	</StyledButton>

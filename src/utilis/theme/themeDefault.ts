@@ -7,32 +7,36 @@ interface Polished {
 	color?: string;
 }
 
+const colors = {
+	base1: '#282444',
+	base2: '#e37240',
+	base3: '#e340c8',
+	accent1: '#4840e3',
+	accent2: '#40e34e',
+	accent3: '#e39c40',
+
+	danger: '#ff000a',
+	warning: '#ffc107',
+	success: '#409613',
+
+	transparent: 'transparent',
+	white: '#fff',
+	grey100: 'hsl(0, 0%, 96%)',
+	grey200: 'hsl(0, 0%, 90%)',
+	grey300: 'hsl(0, 0%, 80%)',
+	grey400: 'hsl(0, 0%, 70%)',
+	grey500: 'hsl(0, 0%, 60%)',
+	grey600: 'hsl(0, 0%, 50%)',
+	grey700: 'hsl(0, 0%, 40%)',
+	grey800: 'hsl(0, 0%, 30%)',
+	grey900: 'hsl(0, 0%, 20%)',
+	grey1000: 'hsl(0, 0%, 10%)',
+	black: 'hsl(0, 0%, 0%)',
+};
+
 const ThemeDefault: DefaultTheme = () => {
 	const theme = {
-		base1: '#282444',
-		base2: '#e37240',
-		base3: '#e340c8',
-		accent1: '#4840e3',
-		accent2: '#40e34e',
-		accent3: '#e39c40',
-
-		danger: '#ff000a',
-		warning: '#ffc107',
-		success: '#409613',
-
-		transparent: 'transparent',
-		white: '#fff',
-		grey100: 'hsl(0, 0%, 96%)',
-		grey200: 'hsl(0, 0%, 90%)',
-		grey300: 'hsl(0, 0%, 80%)',
-		grey400: 'hsl(0, 0%, 70%)',
-		grey500: 'hsl(0, 0%, 60%)',
-		grey600: 'hsl(0, 0%, 50%)',
-		grey700: 'hsl(0, 0%, 40%)',
-		grey800: 'hsl(0, 0%, 30%)',
-		grey900: 'hsl(0, 0%, 20%)',
-		grey1000: 'hsl(0, 0%, 10%)',
-		black: 'hsl(0, 0%, 0%)',
+		...colors,
 
 		font: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
 		fontFeatured: '"Roboto Condensed", sans-serif',
@@ -74,5 +78,7 @@ const ThemeDefault: DefaultTheme = () => {
 };
 
 export type ThemeType = typeof ThemeDefault;
+
+export type ColorTye = keyof typeof colors;
 
 export default ThemeDefault;

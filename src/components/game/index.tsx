@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import { Gallows, Keyboard, Lives, Message, Word } from './elements';
+import { Gallows, Keyboard, Lives, Message, StartingScreen, Word } from './elements';
 import { Wrapper } from '../../coreUI';
 import { addLetter, endGame, startGame, useAppDispatch, useAppSelector } from '../../redux';
 import { GameStatus } from '../../models';
 
 const StyledWrapper = styled.div`
+	position: relative;
 	display: grid;
 	grid-template-columns: min-content repeat(2, 1fr);
 	grid-template-rows: min-content 1fr repeat(2, min-content);
@@ -39,12 +40,6 @@ export const Game = () => {
 	const words: Array<string> = ['array', 'react', 'message', 'apple', 'programming'];
 
 	useEffect(() => {
-		if (status === GameStatus.idle) {
-			dispatch(startGame(words[Math.floor(Math.random() * words.length)]));
-		}
-	}, [words]);
-
-	useEffect(() => {
 		if (!lives && GameStatus.during) {
 			dispatch(
 				endGame({
@@ -65,9 +60,14 @@ export const Game = () => {
 		}
 	}, [dispatch, hiddenWord, typedLetters]);
 
+	const startGameHandler = () => {
+		dispatch(startGame(words[Math.floor(Math.random() * words.length)]));
+	};
+
 	return (
 		<Wrapper>
 			<StyledWrapper>
+				<StartingScreen status={status} onClick={() => startGameHandler()} />
 				<Gallows lives={lives} />
 				<Keyboard
 					letters={typedLetters}
