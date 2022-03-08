@@ -39,6 +39,10 @@ export const Game = () => {
 	const { status, lives, typedLetters, hiddenWord, message } = useAppSelector((state) => state.singleGame);
 	const words: Array<string> = ['array', 'react', 'message', 'apple', 'programming'];
 
+	const startGameHandler = () => {
+		dispatch(startGame(words[Math.floor(Math.random() * words.length)]));
+	};
+
 	useEffect(() => {
 		if (!lives && GameStatus.during) {
 			dispatch(
@@ -59,10 +63,6 @@ export const Game = () => {
 			dispatch(endGame({ score: 2, message: { type: 'success', value: 'Cool! keep it up' } }));
 		}
 	}, [dispatch, hiddenWord, typedLetters]);
-
-	const startGameHandler = () => {
-		dispatch(startGame(words[Math.floor(Math.random() * words.length)]));
-	};
 
 	return (
 		<Wrapper>
