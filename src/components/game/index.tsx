@@ -52,7 +52,7 @@ export const Game = () => {
 				}),
 			);
 		}
-	}, [lives]);
+	}, [lives, dispatch, hiddenWord]);
 
 	useEffect(() => {
 		if (GameStatus.during && typedLetters.length >= 1 && hiddenWord.every((elem) => typedLetters.includes(elem))) {
