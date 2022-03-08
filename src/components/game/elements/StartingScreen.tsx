@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 	align-items: center;
 	width: 100%;
 	height: 100%;
-	background-color: ${({ theme }) => theme.transparentize({ amount: 0.75, color: theme.black })};
+	background-color: ${({ theme }) => theme.transparentize({ amount: 0.95, color: theme.black })};
 	z-index: 3;
 `;
 
