@@ -1,9 +1,11 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import singleGame from './SingleGame';
+import auth from './auth/auth';
 
 export const store = configureStore({
 	reducer: {
 		singleGame: singleGame,
+		auth: auth,
 	},
 });
 

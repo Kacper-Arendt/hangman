@@ -79,6 +79,6 @@ const ThemeDefault: DefaultTheme = () => {
 
 export type ThemeType = typeof ThemeDefault;
 
-export type ColorTye = keyof typeof colors;
+export type ColorType = keyof typeof colors;
 
 export default ThemeDefault;

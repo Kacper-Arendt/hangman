@@ -1,15 +1,19 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Button, Input, Logo } from '../';
+import { Button, Logo } from '../';
+import React, { ReactNode } from 'react';
+import { loginWithGoogle } from '../../redux/auth/thunk';
+import { useAppDispatch } from '../../redux';
 
 interface Props {
 	email?: boolean;
 	name?: boolean;
 	buttonValue: string;
-	onSubmit: () => void;
 	linkPath: string;
 	linkValue: string;
 	linkText: string;
+	children?: ReactNode;
+	onSubmit: (e: React.SyntheticEvent) => void;
 }
 
 const Wrapper = styled.div`
@@ -31,17 +35,24 @@ const StyledForm = styled.form`
 	row-gap: 1rem;
 `;
 
-export const Form = ({ email, name, linkPath, linkValue, buttonValue, onSubmit, linkText }: Props) => (
-	<Wrapper>
-		<StyledForm onSubmit={onSubmit}>
-			<Logo />
-			{email && <Input bgColor="transparent" title="Email" type="email" />}
-			{name && <Input bgColor="white" title="Name" type="text" />}
-			<Input bgColor="white" title="Password" type="password" />
-			<Button value={buttonValue} type="submit" variant="black" width="100%" />
-		</StyledForm>
-		<span>
-			{linkText} <Link to={linkPath}>{linkValue}</Link>
-		</span>
-	</Wrapper>
-);
+export const Form = ({ linkPath, linkValue, buttonValue, onSubmit, linkText, children }: Props) => {
+	const dispatch = useAppDispatch();
+
+	const appLogin = () => {
+		dispatch(loginWithGoogle());
+	};
+
+	return (
+		<Wrapper>
+			<StyledForm onSubmit={onSubmit}>
+				<Logo />
+				{children}
+				<Button value={buttonValue} type="submit" variant="black" width="100%" />
+			</StyledForm>
+			<span>
+				{linkText} <Link to={linkPath}>{linkValue}</Link>
+			</span>
+			<Button variant="white" value="Login With Google" onClick={() => appLogin()} />
+		</Wrapper>
+	);
+};
