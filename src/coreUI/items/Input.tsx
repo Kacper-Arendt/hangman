@@ -1,19 +1,24 @@
 import styled, { css } from 'styled-components';
-import { ColorTye } from '../../utilis/theme/themeDefault';
+import { ColorType } from '../../utilis/theme/themeDefault';
+import React from 'react';
+import { Spinner } from '../elements/Spinner';
 
 interface Props {
 	title: string;
-	bgColor: ColorTye;
+	name: string;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 	btnType?: 'button' | 'reset' | 'submit';
 	type?: string;
 	error?: string;
+	value?: string;
+	bgColor?: ColorType;
+	loading?: boolean;
 }
 
 const Label = styled.label`
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	row-gap: 0.5rem;
 	font-size: 0.9rem;
 	width: 20rem;
 
@@ -47,15 +52,26 @@ const StyledButton = styled.button<{ type: string }>`
 	margin-left: auto;
 	border: none;
 	background: transparent;
-	font-weight: ${({ theme }) => theme.semiBold};
+	font-weight: ${({ theme }) => theme.fontWeight.bold};
 	cursor: pointer;
+	min-height: 1.5rem;
 `;
 
-export const Input = ({ title, type = 'text', bgColor = 'transparent', error, btnType }: Props) => (
+export const Input = ({
+	title,
+	type = 'text',
+	bgColor = 'transparent',
+	error,
+	btnType,
+	onChange,
+	name,
+	value,
+	loading,
+}: Props) => (
 	<Label>
 		{title}
-		{btnType && <StyledButton type={btnType}>Zmień</StyledButton>}
-		<StyledInput type={type} bgColor={bgColor} />
+		{btnType && <StyledButton type={btnType}>{loading ? <Spinner size={1} /> : 'Zmień'}</StyledButton>}
+		<StyledInput type={type} bgColor={bgColor} onChange={onChange} name={name} value={value} />
 		{error && <p>{error}</p>}
 	</Label>
 );
