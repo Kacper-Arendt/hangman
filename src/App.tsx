@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Login, Profile, Register } from './components/auth';
 import { Game } from './components/game';
 import { useAuth } from './hooks';
+import { Nav } from './components/nav';
 
 const Wrapper = styled.div`
 	height: 100vh;
@@ -16,6 +17,7 @@ function App() {
 	return (
 		<Wrapper>
 			<BrowserRouter>
+				<Nav />
 				<Routes>
 					<Route path="/">
 						<Route index element={<Game />} />

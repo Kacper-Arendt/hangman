@@ -1,5 +1,5 @@
 // import { css } from 'styled-components';
-import { darken, transparentize } from 'polished';
+import { darken, lighten, transparentize } from 'polished';
 import { DefaultTheme } from 'styled-components';
 
 interface Polished {
@@ -65,6 +65,7 @@ const ThemeDefault: DefaultTheme = () => {
 		},
 
 		transparentize: ({ amount = 0.7, color }: Polished) => transparentize(amount ?? 0.7, color ?? theme.base1),
+		lighten: ({ amount = 0.7, color }: Polished) => lighten(amount ?? 0.7, color ?? theme.base1),
 		darken: ({ amount, color }: Polished) => darken(amount ?? 0.2, color ?? theme.base1),
 		shadow: ({ color }: { color?: string }) => `
 			box-shadow: 0px 4px 16px ${theme.transparentize({ color, amount: 0.75 })};
