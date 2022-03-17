@@ -6,6 +6,7 @@ import { Login, Profile, Register } from './components/auth';
 import { Game } from './components/game';
 import { useAuth } from './hooks';
 import { Nav } from './components/nav';
+import { GlobalAlert } from './coreUI/elements/alerts/views/GlobalAlert';
 
 const Wrapper = styled.div`
 	height: 100vh;
@@ -16,6 +17,7 @@ function App() {
 
 	return (
 		<Wrapper>
+			<GlobalAlert />
 			<BrowserRouter>
 				<Nav />
 				<Routes>

@@ -9,8 +9,8 @@ import { useField } from '../../hooks';
 
 //COMPONENTS
 import { Form, Input } from '../../coreUI';
-import { generateUserDoc } from '../../firebase/firestore';
-import { logout, useAppDispatch } from '../../redux';
+import { generateUserDoc } from '../../firebase';
+import { addAlert, logout, useAppDispatch } from '../../redux';
 
 interface NewUser {
 	name: string;
@@ -36,11 +36,18 @@ export const Register = () => {
 				const { uid, email } = registerUser.user;
 				if (email) {
 					await generateUserDoc({ id: uid, email, displayName: fields.name, photoURL: null });
+					dispatch(addAlert({ title: 'Sukces', value: 'Konto zostało utworzone', type: 'success' }));
 				}
 				dispatch(logout());
 			}
-		} catch (e: any) {
-			console.log(e.message);
+		} catch (e) {
+			dispatch(
+				addAlert({
+					value: 'Spróbuj ponownie',
+					title: 'Błąd podczas rejestracji',
+					type: 'danger',
+				}),
+			);
 		}
 	};
 

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { Form, Input } from '../../coreUI';
-import { useAppDispatch, useAppSelector, loginWithEmailAndPassword } from '../../redux';
+import { addAlert, loginWithEmailAndPassword, useAppDispatch, useAppSelector } from '../../redux';
 import { useField } from '../../hooks';
 
 const initVal = {
@@ -16,8 +16,18 @@ export const Login = () => {
 	const navigate = useNavigate();
 
 	const loginWithCredentials = (e: React.SyntheticEvent) => {
-		e.preventDefault();
-		dispatch(loginWithEmailAndPassword({ password: fields.password, email: fields.email }));
+		try {
+			e.preventDefault();
+			dispatch(loginWithEmailAndPassword({ password: fields.password, email: fields.email }));
+		} catch (e) {
+			dispatch(
+				addAlert({
+					value: 'Spróbuj ponownie',
+					title: 'Błąd podczas logowania',
+					type: 'danger',
+				}),
+			);
+		}
 	};
 
 	useEffect(() => {

@@ -51,7 +51,7 @@ export const StyledBurger = styled.button<MenuIProps>`
   position: relative;
   border: none;
   margin-right: 10%;
-  transition: all .3s ease-in-out;
+  transition: all .35s ease-in-out;
   transform: ${(props: MenuIProps) => props.isOpen && 'rotate(45deg)'};
   z-index: 11;
   background: transparent;
@@ -81,11 +81,11 @@ export const StyledBurger = styled.button<MenuIProps>`
     }
 
     :nth-child(2) {
-      opacity: ${(props: MenuIProps) => (props.isOpen ? '0' : '1')};
+      transform: ${(props: MenuIProps) => props.isOpen && 'rotate(90deg)'};
     }
 
     :nth-child(3) {
-      transform: ${(props: MenuIProps) => props.isOpen && 'translateY(-10px) rotate(90deg)'};
+      transform: ${(props: MenuIProps) => props.isOpen && 'translateY(-10px)'};
     }
   }
 }
