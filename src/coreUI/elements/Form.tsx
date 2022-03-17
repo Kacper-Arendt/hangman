@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Logo } from '../';
 import React, { ReactNode } from 'react';
 import { loginWithGoogle } from '../../redux/auth/thunk';
-import { useAppDispatch } from '../../redux';
+import { addAlert, useAppDispatch } from '../../redux';
 
 interface Props {
 	email?: boolean;
@@ -39,7 +39,11 @@ export const Form = ({ linkPath, linkValue, buttonValue, onSubmit, linkText, chi
 	const dispatch = useAppDispatch();
 
 	const appLogin = () => {
-		dispatch(loginWithGoogle());
+		try {
+			dispatch(loginWithGoogle());
+		} catch (e) {
+			dispatch(addAlert({ title: 'Wystąpił błąd', value: 'Spróbuj ponownie', type: 'danger' }));
+		}
 	};
 
 	return (

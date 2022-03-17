@@ -18,6 +18,7 @@ const colors = {
 	danger: '#ff000a',
 	warning: '#ffc107',
 	success: '#409613',
+	success100: '#155724',
 
 	transparent: 'transparent',
 	white: '#fff',

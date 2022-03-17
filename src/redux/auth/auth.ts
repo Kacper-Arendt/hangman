@@ -6,7 +6,7 @@ export interface AuthState {
 	displayName: string | null;
 	email: string | null;
 	authenticated: boolean;
-	error?: SerializedError;
+	error: SerializedError | null;
 	photoURL?: string | null;
 }
 
@@ -15,7 +15,7 @@ const initialState: AuthState = {
 	displayName: null,
 	email: null,
 	authenticated: false,
-	error: undefined,
+	error: null,
 	photoURL: null,
 };
 
