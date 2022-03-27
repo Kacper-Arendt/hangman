@@ -1,5 +1,6 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import singleGame from './SingleGame';
+import MPGame from './Multiplayer';
 import global from './Global';
 import auth from './auth/auth';
 
@@ -8,6 +9,7 @@ export const store = configureStore({
 		singleGame,
 		auth,
 		global,
+		MPGame,
 	},
 });
 

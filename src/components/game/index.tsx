@@ -75,7 +75,7 @@ export const Game = () => {
 						dispatch(addLetter(el));
 					}}
 				/>
-				<Word />
+				<Word hiddenWord={hiddenWord} typedLetters={typedLetters} />
 				<Lives lives={lives} />
 				{message && <Message type={message.type} value={message.value} content={message.content} />}
 			</StyledWrapper>

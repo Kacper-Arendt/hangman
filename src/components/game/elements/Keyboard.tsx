@@ -78,7 +78,7 @@ const StyledLetter = styled.button<{ disabled: boolean }>`
 
 export const Keyboard = ({ onClick, letters }: { letters: Array<string>; onClick: (letter: string) => void }) => {
 	const usedLetterHandler = (letter: string) => {
-		return letters.includes(letter);
+		return letters?.includes(letter);
 	};
 
 	return (

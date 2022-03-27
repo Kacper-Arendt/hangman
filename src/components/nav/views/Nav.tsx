@@ -22,7 +22,8 @@ export const Nav = () => {
 				) : (
 					<NavbarLink onClick={toggleMenuHandler} value="Login" path="/login" />
 				)}
-				<NavbarLink value="Gra" path="/" onClick={toggleMenuHandler} />
+				<NavbarLink value="Single game" path="/" onClick={toggleMenuHandler} />
+				<NavbarLink value="Multiplayer" path="/multiplayer" onClick={toggleMenuHandler} />
 				{authenticated && <Button variant="black" value="Wyloguj" onClick={() => dispatch(logout())} />}
 			</StyledMenu>
 		</StyledNav>

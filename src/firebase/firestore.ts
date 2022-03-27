@@ -1,4 +1,4 @@
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, setDoc } from 'firebase/firestore';
 import { firestore } from '../config';
 import { FirebasePath } from '../models';
 
@@ -18,5 +18,17 @@ export const generateUserDoc = async ({ id, email, displayName, photoURL }: user
 		}
 	} catch (e: any) {
 		console.log(e);
+	}
+};
+
+export const generateDoc = async (path: FirebasePath, data: {}): Promise<any> => {
+	try {
+		const dataRef = await doc(collection(firestore, path));
+		if (dataRef.id) {
+			await setDoc(dataRef, { ...data, id: dataRef.id });
+			return dataRef.id;
+		}
+	} catch (error) {
+		console.log(error);
 	}
 };

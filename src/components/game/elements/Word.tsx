@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useAppSelector } from '../../../redux';
 
 const StyledWord = styled.div`
 	grid-area: word;
@@ -22,9 +21,7 @@ const StyledLetter = styled.span`
 	margin-top: auto;
 `;
 
-export const Word = () => {
-	const { hiddenWord, typedLetters } = useAppSelector((state) => state.singleGame);
-
+export const Word = ({ typedLetters, hiddenWord }: { typedLetters: string[]; hiddenWord: string[] }) => {
 	const showLetter = (letter: string) => {
 		if (typedLetters && typedLetters.includes(letter)) return letter;
 	};
